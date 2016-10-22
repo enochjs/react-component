@@ -1,0 +1,24 @@
+#page-wrapper{
+	background: #ececec;
+}
+#nav-header{
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 0 4%;
+  height: 80px;
+  line-height: 80px;
+  transition: opacity .5s;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+#main-wrapper{
+	width: 92%;
+	margin: 0 auto;
+	padding-top: 20px;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #fff;
+}
+#nav{
+  width: 250px;
+}
