@@ -4,8 +4,8 @@ const config = {
 		  "name":"Table",
       "url":"",
       "children":[
-          { "name":"ExpandTable", "route":"nowOrderList" },
-          { "name":"EditTable", "route":"hisOrderList" }
+          { "name":"ExpandTable", "route":"expandTable" },
+          { "name":"EditTable", "route":"editTable" }
       ]
     }
 	]

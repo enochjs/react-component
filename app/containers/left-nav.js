@@ -3,31 +3,51 @@ import React, {
 } from 'react'
 import {
 	Menu,
-	Icon
+	Icon,
 } from 'antd'
+import { 
+	Link,
+	browserHistory,
+} from 'react-router'
+
+import config from './../config'
+
 const SubMenu = Menu.SubMenu
+const menuList = config.menuList
+
+console.log(config)
 
 export default class LeftNav extends Component {
 	constructor(props) {
 		super(props)
 	}
-	handleClick = () => {
-		console.log('handleClick')
+	handleClick = (e) => {
+		browserHistory.push(`/${e.key}`); // history的方式。
 	}
 	render() {
 		return (
-			<nav id='nav'>
+			<nav id='nav' className="ant-col-lg-4">
         <Menu 
         	onClick={this.handleClick}
-        	style={{width: 240}}
         	mode="inline"
         >
-          <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Table</span></span>}>
-            <Menu.Item key="1">Expand Table</Menu.Item>
-            <Menu.Item key="2">Option 2</Menu.Item>
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
-          </SubMenu>
+        {
+        	menuList.map((menu, index) => 
+        		<SubMenu key={menu.name} title={<span><Icon type="appstore" /><span>{menu.name}</span></span>}>
+        			{
+        				menu.children.map((subMenu, subIndex) =>
+        					<Menu.Item key={subMenu.route}>
+        						{
+        							//Link 的方式实现
+        							/*  <Link to={subMenu.route}>{subMenu.name}</Link>   */  
+        						}
+        						{subMenu.name}
+        					</Menu.Item>
+        				)
+        			}
+        		</SubMenu>
+        	)
+        }
         </Menu>
 			</nav>
 		)

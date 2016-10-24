@@ -8,10 +8,6 @@ html,body{
 .pull-left{
 	float: left;
 }
-.clearfix{
-	display: table;
-	clear: both;
-}
 .ellipsis{
 	text-overflow: hidden;
 	overflow: hidden;
@@ -20,6 +16,37 @@ html,body{
 .inline-block{
 	display: inline-block;
 }
+.mt5{
+  margin-top: 5px;
+}
+.mt10{
+  margin-top: 10px;
+}
+.mt15{
+  margin-top: 15px;
+}
+.mt20{
+  margin-top: 20px;
+}
+.mt30{
+  margin-top: 30px;
+}
+.mr5{
+  margin-right: 5px;
+}
+.mr10{
+  margin-right: 10px;
+}
+.mr15{
+  margin-right: 15px;
+}
+.mr20{
+  margin-right: 20px;
+}
+.mr30{
+  margin-right: 30px;
+}
+
 .mb5{
   margin-bottom: 5px;
 }
@@ -34,4 +61,33 @@ html,body{
 }
 .mb30{
   margin-bottom: 30px;
+}
+
+.ml5{
+  margin-left: 5px;
+}
+.ml10{
+  margin-left: 10px;
+}
+.ml15{
+  margin-left: 15px;
+}
+.ml20{
+  margin-left: 20px;
+}
+.ml30{
+  margin-left: 30px;
+}
+.text-right{
+	text-align: right;
+}
+.text-center{
+	text-align: center;
+}
+.text-left{
+	text-align: left;
+}
+.ant-table th, .ant-table td {
+    padding: 12px 8px;
+    font-size: 12px;
 }

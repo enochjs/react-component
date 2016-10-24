@@ -6,14 +6,11 @@ import {
 import App from './containers'
 import {
 	expandTable
-} from './component/table'
-
-console.log(App)
-console.log(expandTable)
+} from './pages/table'
 
 const routes = (
   <Route path="/" component={App}>
-    <Route path='/table' component={expandTable} />
+    <Route path='/expandTable' component={expandTable} />
   </Route>
 )
 
