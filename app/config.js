@@ -5,7 +5,6 @@ const config = {
       "url":"",
       "children":[
           { "name":"ExpandTable", "route":"expandTable" },
-          { "name":"EditTable", "route":"editTable" }
       ]
     }
 	]
