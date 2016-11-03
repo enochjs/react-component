@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
 	entry: [
 		'./app/main.js',
-		'webpack-dev-server/client?http://localhost:8080', //自动刷新
+		'webpack-dev-server/client?http://localhost:3333', //自动刷新
 		//'webpack/hot/only-dev-server', // react-hot-loader "only" prevents reload on syntax errors 
 	], //入口文件
 	output: {

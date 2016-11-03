@@ -75,7 +75,6 @@ export default class ExpandTable extends Component {
       cacheList: list,
       cacheData: cacheData
     },()=>{
-      debugger
       this.initTableList(this.state.cacheList, expands);
     })
   }
@@ -258,7 +257,6 @@ export default class ExpandTable extends Component {
     
   //设置初始列表
   initTableList (list, expands){
-    debugger
     var openItem = {};
     list.map((item,index)=>{
       var count = 0;

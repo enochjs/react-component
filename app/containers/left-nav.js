@@ -15,14 +15,12 @@ import config from './../config'
 const SubMenu = Menu.SubMenu
 const menuList = config.menuList
 
-console.log(config)
-
 export default class LeftNav extends Component {
   constructor(props) {
     super(props)
   }
   handleClick = (e) => {
-          browserHistory.push(`/${e.key}`); // history的方式。
+    browserHistory.push(`/${e.key}`); // history的方式。
   }
   render() {
     return (

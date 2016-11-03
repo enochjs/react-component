@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --port 3333"
   },
   "author": "",
   "license": "ISC",
@@ -16,13 +16,21 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
+    "immutable": "^3.8.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-hot-loader": "^3.0.0-beta.6",
+    "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
+    "redux": "^3.6.0",
+    "redux-actions": "^0.13.0",
+    "redux-immutable": "^3.0.8",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.3.1"
   }
 }
