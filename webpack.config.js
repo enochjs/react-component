@@ -53,12 +53,12 @@ module.exports = {
 	},
 
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(), // react-hot-loader plugin引入
 		new HappyPack({
       id: 'js',
       loaders: [ 'babel' ],
       threadPool: happyThreadPool,
     }),
+		new webpack.HotModuleReplacementPlugin(), // react-hot-loader plugin引入
     new webpack.DefinePlugin({
       'process.env': {
           NODE_ENV: JSON.stringify('development'),
