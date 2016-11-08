@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3333"
+    "start": "webpack-dev-server --watch --progress --color --port 3333",
+    "dll": "webpack --config ./webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
+    "happypack": "^2.2.1",
     "immutable": "^3.8.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

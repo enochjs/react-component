@@ -1,25 +1,26 @@
 const webpack = require('webpack')
 const path = require('path')
+var HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 10 });
 
 module.exports = {
-	entry: [
-		'./app/main.js',
-		'webpack-dev-server/client?http://localhost:3333', //自动刷新
+	entry: {
+		app: [ 'react-hot-loader/patch', path.resolve('app/main.js') ],
+		//'webpack-dev-server/client?http://localhost:3333', //自动刷新
 		//'webpack/hot/only-dev-server', // react-hot-loader "only" prevents reload on syntax errors 
-	], //入口文件
+	}, //入口文件
 	output: {
 		path: path.resolve(__dirname, 'dist'), //打包的文件夹位置
 		filename: 'bundle.js', //文件名
 	},
 
 	module: {
-
 		// Loaders 预处理文件
 		// webpack本身只能处理javascript文件，如果要处理其他类型的文件，就需要使用 loader 进行转换。
 		loaders: [{
 			test: /\.js[x]?$/,
 			exclude: /node_modules/,
-			loader: 'babel', //babel（es6=>es5）套餐loader "babel-loader","babel-core","babel-preset-es2015","babel-preset-react","babel-preset-stage-0"
+			loader: 'happypack/loader?id=js', //babel（es6=>es5）套餐loader "babel-loader","babel-core","babel-preset-es2015","babel-preset-react","babel-preset-stage-0"
 		}, {
 			test: /\.css/,
 			loader: 'style!css', // css文件  loader (style-loader,css-loader)
@@ -29,7 +30,8 @@ module.exports = {
 		}],
 	},
 
-	devtool: 'eval',
+	// devtool: 'eval',
+	devtool: 'cheap-source-map',
 
 	// 热加载 （little node express server）当监听的文件夹内文件发生变化时，会重新编译打包
 	// 打包后的文件是放在内存中的，存放的位置相对于publicPath( 即 assets/bundle.js ) 
@@ -47,11 +49,20 @@ module.exports = {
 		hot: true,		// 热更新 
 		inline: true,	//使用--inline选项会自动把webpack-dev-server客户端加到webpack的入口文件配置中 当hot也设置为true的时候就相当于在entry中加入'webpack/hot/only-dev-server'
 		historyApiFallback: true,  // 启用html5 history api
+		outputPath: path.join(__dirname, './dist'),
 	},
 
 	plugins: [
-		new webpack.HotModuleReplacementPlugin() // react-hot-loader plugin引入
+		new webpack.HotModuleReplacementPlugin(), // react-hot-loader plugin引入
+		new HappyPack({
+      id: 'js',
+      loaders: [ 'babel' ],
+      threadPool: happyThreadPool,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+          NODE_ENV: JSON.stringify('development'),
+      },
+    }),
 	]
-
-
 }

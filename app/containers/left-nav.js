@@ -15,6 +15,8 @@ import config from './../config'
 const SubMenu = Menu.SubMenu
 const menuList = config.menuList
 
+console.log(config)
+
 export default class LeftNav extends Component {
   constructor(props) {
     super(props)
@@ -28,7 +30,7 @@ export default class LeftNav extends Component {
         <Menu 
         	onClick={this.handleClick}
         	mode="inline"
-            >
+        >
           {
           	menuList.map((menu, index) => 
           		<SubMenu key={menu.name} title={<span><Icon type="appstore" /><span>{menu.name}</span></span>}>
