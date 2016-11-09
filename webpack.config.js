@@ -2,16 +2,29 @@ const webpack = require('webpack')
 const path = require('path')
 var HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 10 });
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
 		app: [ 'react-hot-loader/patch', path.resolve('app/main.js') ],
+		//dll: [ path.resolve('dist/dll.vendor.js') ],
 		//'webpack-dev-server/client?http://localhost:3333', //自动刷新
 		//'webpack/hot/only-dev-server', // react-hot-loader "only" prevents reload on syntax errors 
 	}, //入口文件
+	resolve: {
+    extensions: ['', '.js', '.json'],
+    alias: {
+      components: __dirname + '/app/components',
+      actions: __dirname + '/app/actions',
+      api: __dirname + '/app/api',
+      reducers: __dirname + '/app/reducers',
+      utils: __dirname + '/app/utils',
+      constants: __dirname + '/app/constants',
+    },
+  },
 	output: {
 		path: path.resolve(__dirname, 'dist'), //打包的文件夹位置
-		filename: 'bundle.js', //文件名
+		filename: '[name].js', //文件名
 	},
 
 	module: {
@@ -45,11 +58,11 @@ module.exports = {
 
 	devServer: { //热加载 （node express server）
 		contentBase: './app/', //需要监听的文件夹 (默认全部文件)
-		publicPath: '/assets/', //定义存放在内存中的位置（可以） 不写的话读取output 中的publicPath
+		publicPath: '/', //定义存放在内存中的位置（可以） 不写的话读取output 中的publicPath
 		hot: true,		// 热更新 
 		inline: true,	//使用--inline选项会自动把webpack-dev-server客户端加到webpack的入口文件配置中 当hot也设置为true的时候就相当于在entry中加入'webpack/hot/only-dev-server'
 		historyApiFallback: true,  // 启用html5 history api
-		outputPath: path.join(__dirname, './dist'),
+		outputPath: path.join(__dirname, '/'),
 	},
 
 	plugins: [
@@ -58,11 +71,20 @@ module.exports = {
       loaders: [ 'babel' ],
       threadPool: happyThreadPool,
     }),
+    //new webpack.optimize.OccurenceOrderPlugin(),
+    //new webpack.optimize.CommonsChunkPlugin('vendor.dll.js'),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '/app/index.html'),  //需要设置publicPath: '/' 或者不设置
+    }),
 		new webpack.HotModuleReplacementPlugin(), // react-hot-loader plugin引入
     new webpack.DefinePlugin({
       'process.env': {
           NODE_ENV: JSON.stringify('development'),
       },
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./app/dist/vendor-manifest.json')
     }),
 	]
 }

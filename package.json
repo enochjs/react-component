@@ -4,7 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server --watch --progress --color --port 3333",
+    "start": "npm run webpackDev",
+    "dll-start": "npm run dll && npm run webpackDev",
+    "webpackDev": "webpack-dev-server --watch --progress --color --port 3333",
     "dll": "webpack --config ./webpack.dll.config.js"
   },
   "author": "",
