@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const outputPath = './app/dist';
+const outputPath = './dist';
 
 module.exports = {
   entry: {
