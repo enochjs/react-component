@@ -1,12 +1,12 @@
 const config = {
 	menuList: [
-		{
-		  "name":"Table",
-      "url":"",
-      "children":[
-          { "name":"ExpandTable", "route":"expandTable" },
-      ]
-    }
+        {
+            "name":"Table",
+            "url":"",
+            "children":[
+                { "name":"ExpandTable", "route":"expandTable" },
+            ]
+        }
 	]
 }
 
