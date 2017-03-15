@@ -6,13 +6,13 @@
   "scripts": {
     "start": "npm run webpackDev",
     "dll-start": "npm run dll && npm run webpackDev",
-    "webpackDev": "webpack-dev-server --watch --progress --color --port 3333",
+    "webpackDev": "webpack-dev-server --watch --progress --color --port 3000",
     "dll": "webpack --config ./webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "antd": "^2.1.0",
+    "antd": "^2.7.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
